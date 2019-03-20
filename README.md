@@ -27,7 +27,7 @@ The basic structure of commands for running the program is shown below.
 
 `-n NUMBER_OF_ROWS` is an optional argument, where `NUMBER_OF_ROWS` is a numerical value. Use it to set the number of rows returned by the query.
 
-###1. Print top articles in the database**
+### 1. Print top articles in the database**
 `$ python3 news.py top-articles -n 3`
 
 Example output:
@@ -37,7 +37,7 @@ Example output:
     Bears love berries, alleges bear - 253801 views
     Bad things gone, say good people - 170098 views
 
-###2. Print top authors**
+### 2. Print top authors**
 
 `$ python3 news.py top-articles -n 3`
 
@@ -48,7 +48,7 @@ Example output:
     Rudolf von Treppenwitz - 423457 views
     Anonymous Contributor - 170098 views
 
-###3. Print days on which >1% of page requests led to an error**
+### 3. Print days on which >1% of page requests led to an error**
 
 `$ python3 news.py one-percent-error-days -n 3`
 
