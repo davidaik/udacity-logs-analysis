@@ -2,7 +2,7 @@
 
 **news.py** is a command line program that answers some useful queries related to the news database. It is useful for getting information on top articles, top authors, and to find the days on which a large number of requests to the news website led to an error.
 
-It uses the `psycopg2` library to run SQL queries against the news database.
+It uses the **psycopg2** library to run SQL queries against the news database.
 
 ## Setting up
 
@@ -40,7 +40,7 @@ While you're connected to your virtual machine, cd into the **vagrant** director
 Then clone the repository into this directory by running
 `$ git clone https://github.com/davidaik/udacity-logs-analysis.git`
 
-If **git** is not install, install it by running  
+If **git** is not installed, install it by running  
 `$ sudo apt install git`
 
 This will give you a directory called **udacity-logs-analysis** which will contain the **news.py** file along with others.
@@ -59,7 +59,9 @@ To do this, on your virtual machine, cd into the **udacity-logs-analysis** direc
 Now we're ready to use the program.
 
 
-## Dependencies
+## Python Dependencies
+
+You will need to install the following python modules on your VM.
 
 **psycopg2**:  
 `$ pip3 install psycopg2`
@@ -67,7 +69,7 @@ Now we're ready to use the program.
 **psycopg2-binary**: To avoid **The psycopg2 wheel package will be renamed** warning.  
 `$ pip3 install psycopg2-binary`
 
-If you're still getting the warning, uninstall both `psycopg2` and `psycopg2-binary` and run the following in order.
+If you're still getting the warning, uninstall both **psycopg2** and **psycopg2-binary** and run the following in order.
 
 `$ pip3 install psycopg2`  
 `$ pip3 install psycopg2-binary`
