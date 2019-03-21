@@ -29,7 +29,7 @@ Your virtual machine should be running now. To connect to it, run `vagrant ssh`
 To log out of your virtual machine, run type `CTRL+D`. To stop the running vm, run
 `vagrant halt`.
 
-If you reboot your computer, or you have stopped down your virtual machine, start it again by running `vagrant up` the same way as you did before. Note: This will not download the virtual machine again from the network.
+If you reboot your computer, or you have stopped your virtual machine, start it again by running `vagrant up` the same way as you did before. Note: This will not download the virtual machine again from the network.
 
 ## Download the program
 
@@ -53,7 +53,7 @@ To get any useful output form the program, we will need some database with prope
 
 Now, we need to import the data from the **newsdata.sql** file into your PostgreSQL database which comes with the given VM.
 
-To do this, on your virtual machine, cd into the **udacity-logs-analysis** directory and run
+To do this, on your virtual machine, cd into the **udacity-logs-analysis** directory and run  
 `psql -d news -f newsdata.sql`
 
 Now we're ready to use the program.
