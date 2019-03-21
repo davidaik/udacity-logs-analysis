@@ -64,10 +64,19 @@ def get_one_percent_error_days(num_days):
     c = db.cursor()
 
     c.execute('''select * from
-                    (select allreqsquery.day, (cast(errorsquery.errorsnum as float) * 100 / allreqsquery.reqsnum) as percent
+                    (select allreqsquery.day,
+                            (errorsquery.errorsnum * 100.0
+                            / allreqsquery.reqsnum) as percent
                         from
-                            (select date(time) as day, count(*) as reqsnum from log group by day) as allreqsquery,
-                            (select date(time) as day, count(*) as errorsnum from log where status != '200 OK' group by day) as errorsquery
+                            (select date(time) as day, count(*) as reqsnum
+                                from log
+                                group by day)
+                                as allreqsquery,
+                            (select date(time) as day, count(*) as errorsnum
+                                from log
+                                where status != '200 OK'
+                                group by day)
+                                as errorsquery
                         where allreqsquery.day = errorsquery.day
                         order by errorsquery.errorsnum desc%s) as subquery
                     where subquery.percent > 1''' % (limit))
@@ -77,9 +86,24 @@ def get_one_percent_error_days(num_days):
 
 
 # Parse command line arguments
-parser = argparse.ArgumentParser(description='Get information from news database')
-parser.add_argument("querytype", choices=['top-articles', 'top-authors', 'one-percent-error-days'], help="Query to run")
-parser.add_argument('-n', '--numrows', help='number of rows to return', type=int)
+parser = argparse.ArgumentParser(
+            description='Get information from news database'
+        )
+parser.add_argument(
+                    "querytype",
+                    choices=[
+                        'top-articles',
+                        'top-authors',
+                        'one-percent-error-days'
+                    ],
+                    help="Query to run"
+                )
+parser.add_argument(
+                    '-n',
+                    '--numrows',
+                    help='number of rows to return',
+                    type=int
+                )
 args = parser.parse_args()
 
 if(args.querytype == 'top-articles'):
@@ -101,4 +125,8 @@ elif(args.querytype == 'one-percent-error-days'):
     if args.numrows:
         days_count = args.numrows
     for day in get_one_percent_error_days(days_count):
-        print('%s %s, %s - %f%% errors' % (calendar.month_name[day[0].month], day[0].day, day[0].year, day[1]))
+        print('%s %s, %s - %f%% errors' %
+              (calendar.month_name[day[0].month],
+               day[0].day,
+               day[0].year,
+               day[1]))
