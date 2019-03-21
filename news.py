@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
 import argparse
-import warnings
-warnings.filterwarnings("ignore") # suppress psycopg2 import warning
 import psycopg2
 import calendar
 DBNAME = "news"
